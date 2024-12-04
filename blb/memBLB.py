@@ -87,10 +87,6 @@ if __name__ == "__main__":
     def coef_estimator(x):
         return LinearRegression().fit(x[:, :-1], x[:, -1]).coef_  # returns whole vector
 
-    data = onesim()
-    blb = BLB(estimator=coef_estimator)
-    lower, upper = blb.confidence_interval(data)  # each bound is a vector
-    np.c_[lower, coef_estimator(data), upper]
     # Time parallel vs non-parallel
     for n_jobs in [1, -1]:  # 1 for serial, -1 for all cores
         data = onesim()
